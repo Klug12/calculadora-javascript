@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt=br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .background {
+            background-image: linear-gradient(45deg, black, crimson);
+            height: 100vh;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        .calculadora {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 25px;
+            padding: 20px;
+        }
+
+
+        .botaoOnCe {
+            width: 40px;
+            height: 40px;
+            font-size: 60%;
+            background-color: red;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            margin: 3px;
+
+        }
+
+        .botoesMemoria {
+            width: 40px;
+            height: 10px;
+            cursor: pointer;
+            background-color: rgb(31, 31, 31);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            margin: 3px;
+            font-size: x-small;
+        }
+
+        .botaoOff {
+            width: 40px;
+            height: 30px;
+            text-align: center;
+            cursor: pointer;
+            background-color: rgb(31, 31, 31);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            margin: 3px;
+            font-size: large;
+        }
+
+        .botaoSoma {
+            width: 40px;
+            height: 70px;
+            background-color: red;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            margin: 3px;
+            font-size: xx-large;
+        }
+
+        .botoes {
+            width: 40px;
+            height: 30px;
+            text-align: center;
+            cursor: pointer;
+            background-color: rgb(31, 31, 31);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            margin: 3px;
+            font-size: x-large;
+        }
+
+        .botaoOnCe:hover {
+            background-color: rgb(138, 5, 5);
+        }
+
+        .botoesMemoria:hover {
+            background-color: black;
+        }
+
+        .botaoOff:hover {
+            background-color: black;
+        }
+
+        .botaoSoma:hover {
+            background-color: rgb(138, 5, 5);
+        }
+
+        .botoes:hover {
+            background-color: black;
+        }
+
+        #resultado {
+            background-color: #fff;
+            width: 190px;
+            height: 30px;
+            margin: 2px;
+            font-size: xx-large;
+            color: black;
+            text-align: right;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <h1>Calculadora básica</h1>
+        <div class="calculadora">
+            <h1>Elgin</h1>
+            <h2>CB 1485</h2>
+            <p id="resultado"></p>
+            <table>
+                <tr>
+                    <td><button class="botaoOnCe" onclick="clean()">ON|CE</button></td>
+                    <td><button class="botoesMemoria">MRC</button></td>
+                    <td><button class="botoesMemoria">M+</button></td>
+                    <td><button class="botoesMemoria">M-</button></td>
+                </tr>
+
+                <tr>
+                    <td><button class="botaoOff">OFF</button></td>
+                    <td><button class="botoes" onclick="raiz('√')">√</button></td>
+                    <td><button class="botoes" onclick="insert('%')">%</button></td>
+                    <td><button class="botoes" onclick="insert('/')">/</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botoes" onclick="insert('7')">7</button></td>
+                    <td><button class="botoes" onclick="insert('8')">8</button></td>
+                    <td><button class="botoes" onclick="insert('9')">9</button></td>
+                    <td><button class="botoes" onclick="insert('*')">X</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botoes" onclick="insert('4')">4</button></td>
+                    <td><button class="botoes" onclick="insert('5')">5</button></td>
+                    <td><button class="botoes" onclick="insert('6')">6</button></td>
+                    <td><button class="botoes" onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botoes" onclick="insert('1')">1</button></td>
+                    <td><button class="botoes" onclick="insert('2')">2</button></td>
+                    <td><button class="botoes" onclick="insert('3')">3</button></td>
+                    <td rowspan="2"><button class="botaoSoma" onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botoes" onclick="insert('0')">0</button></td>
+                    <td><button class="botoes" onclick="insert('.')">.</button></td>
+                    <td><button class="botoes" onclick="calcular()">=</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function insert(num) {
+            var numero = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = numero + num;
+        }
+        function clean() {
+            document.getElementById('resultado').innerHTML = "";
+        }
+        function calcular() {
+            var resultado = document.getElementById('resultado').innerHTML;
+            if (resultado) {
+                document.getElementById('resultado').innerHTML = eval(resultado);
+            }
+            else {
+                document.getElementById('resultado').innerHTML = "0";
+            }
+        }
+        function raiz() {
+            var raiz = document.getElementById('resultado').innerHTML = Math.sqrt();
+        }
+    </script>
+</body>
+
+</html>
